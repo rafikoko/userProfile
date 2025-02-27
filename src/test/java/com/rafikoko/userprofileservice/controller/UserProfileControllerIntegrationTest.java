@@ -119,4 +119,14 @@ public class UserProfileControllerIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(0)));
     }
+
+    @Test
+    public void testGetNonExistingProfile_TriggersGlobalExceptionHandler() throws Exception {
+        long nonExistentId = 9999L;
+        mockMvc.perform(get("/profiles/{id}", nonExistentId))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message").value("UserProfile not found for id: " + nonExistentId))
+                .andExpect(jsonPath("$.status").value(404));
+    }
+
 }

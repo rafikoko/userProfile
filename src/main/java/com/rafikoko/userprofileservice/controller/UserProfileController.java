@@ -34,21 +34,21 @@ public class UserProfileController {
 
     // Retrieve a specific profile by ID
     @GetMapping("/{id}")
-    public ResponseEntity<UserProfile> getProfileById(@PathVariable Long id) {
+    public ResponseEntity<UserProfile> getProfileById(@PathVariable("id") Long id) {
         UserProfile profile = userProfileService.getProfileById(id);
         return ResponseEntity.ok(profile);
     }
 
     // Update an existing profile
     @PutMapping("/{id}")
-    public ResponseEntity<UserProfile> updateProfile(@PathVariable Long id, @Valid @RequestBody UserProfile profile) {
+    public ResponseEntity<UserProfile> updateProfile(@PathVariable("id") Long id, @Valid @RequestBody UserProfile profile) {
         UserProfile updatedProfile = userProfileService.updateUserProfile(id, profile);
         return ResponseEntity.ok(updatedProfile);
     }
 
     // Delete a profile
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProfile(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteProfile(@PathVariable("id") Long id) {
         userProfileService.deleteUserProfile(id);
         return ResponseEntity.noContent().build();
     }
