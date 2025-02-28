@@ -41,6 +41,12 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+
         <!-- H2 In-Memory Database -->
         <dependency>
             <groupId>com.h2database</groupId>
@@ -48,11 +54,12 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Lombok (Optional: simplifies boilerplate code) -->
+        <!-- Lombok (Optional: avoiding boilerplate code) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <version>1.18.36</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -72,7 +79,6 @@
 
     <build>
         <plugins>
-            <!-- Maven Compiler Plugin to use Java 17 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -80,6 +86,20 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.36</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.rafikoko.userprofileservice.UserProfileServiceApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
