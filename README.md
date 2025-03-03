@@ -26,9 +26,12 @@ docker run -p 8080:8080 user-profile-service
 Starts the container, mapping port 8080 in the container to port 8080 on your local machine.
 
 ## Frontend (npm)
+Go to 'frontend' directory from project root
+
 - ### Install Dependencies:
 
 ```bash
+cd frontend
 npm install
 ```
 Installs all required packages for the frontend.
