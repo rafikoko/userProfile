@@ -4,6 +4,7 @@ User Profile Microservice
 ## Technical Commands
 - ### Backend (Spring Boot & Maven)
 Build & Repackage Application:
+Run in root of the project
 ```bash
 mvn clean package spring-boot:repackage
 ```
